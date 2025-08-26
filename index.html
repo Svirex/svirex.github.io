@@ -31,42 +31,13 @@
 
   <title>tothebrim</title>
   <link rel="manifest" href="manifest.json">
+  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
 
   <!-- Capture PWA install prompt event -->
-<script>
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      deferredPrompt = e;
-    });
-
-    function promptInstall(){
-       deferredPrompt.prompt();
-    }
-
-    // Listen for app install event
-    window.addEventListener('appinstalled', () => {
-      deferredPrompt = null;
-      appInstalled();
-    });
-
-    // Track how PWA was launched (either from browser or as PWA)
-    function getLaunchMode() {
-      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-      if(deferredPrompt) hasPrompt();
-      if (document.referrer.startsWith('android-app://')) {
-        appLaunchedAsTWA();
-      } else if (navigator.standalone || isStandalone) {
-        appLaunchedAsPWA();
-      } else {
-        window.appLaunchedInBrowser();
-      }
-    }
-</script>
 </head>
 <body>
   
   <script src="flutter_bootstrap.js" async></script>
-  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+  
 </body>
 </html>
